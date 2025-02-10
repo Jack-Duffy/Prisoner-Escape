@@ -18,7 +18,7 @@ class GameLevelDesert {
         name: 'Prison Escape',
         greeting: "Welcome to the Prison!  It's Misserable here, Your only job... GET OUT!",
         src: image_src_desert,
-        pixels: {height: 580, width: 1038}
+        pixels: {height: 168, width: 300}
     };
 
 
