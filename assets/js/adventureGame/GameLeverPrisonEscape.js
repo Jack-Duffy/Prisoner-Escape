@@ -12,12 +12,11 @@ class GameLevelDesert {
     let width = GameEnv.innerWidth;
     let height = GameEnv.innerHeight;
 
-
     // Background data
-    const image_src_desert = path + "/images/gamify/desert.png"; // be sure to include the path
+    const image_src_desert = path + "images/gamify/Prison escape backround.jpeg"; // be sure to include the path
     const image_data_desert = {
-        name: 'desert',
-        greeting: "Welcome to the desert!  It is hot and dry here, but there are many adventures to be had!",
+        name: 'Prison Escape',
+        greeting: "Welcome to the Prison!  It's Misserable here, Your only job... GET OUT!",
         src: image_src_desert,
         pixels: {height: 580, width: 1038}
     };
