@@ -26,7 +26,7 @@ class GameLevelPrisonEscape {
     const CHILLGUY_SCALE_FACTOR = 5;
     const sprite_data_chillguy = {
       id: 'Chill Guy',
-      greeting: "Hi, I am Chill Guy, the desert wanderer. I am looking for wisdom and adventure!",
+      greeting: "Hi, I am Chill Guy, Currently in prison, Unfortunatly I need to break out!",
       src: sprite_src_chillguy,
       SCALE_FACTOR: CHILLGUY_SCALE_FACTOR,
       STEP_FACTOR: 1000,
