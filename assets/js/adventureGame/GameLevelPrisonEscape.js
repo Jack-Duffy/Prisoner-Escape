@@ -47,8 +47,6 @@ class GameLevelPrisonEscape {
       keypress: { up: 87, left: 65, down: 83, right: 68 }
     };
 
-    };
-
     // NPC Data
     const npcs = [
       {
