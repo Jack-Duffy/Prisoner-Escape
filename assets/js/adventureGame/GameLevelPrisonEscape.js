@@ -36,9 +36,13 @@ class GameLevelPrisonEscape {
       orientation: { rows: 4, columns: 4 },
       frameSize: { width: 161, height: 237 },
       down: { row: 0, start: 0, columns: 3 },
+      downRight: {row: 1, start: 0, columns: 3, rotate: Math.PI/16 },
+        downLeft: {row: 2, start: 0, columns: 3, rotate: -Math.PI/16 },
       left: { row: 2, start: 0, columns: 3 },
       right: { row: 3, start: 0, columns: 3 },
       up: { row: 1, start: 0, columns: 3 },
+      upLeft: {row: 2, start: 0, columns: 3, rotate: Math.PI/16 },
+        upRight: {row: 1, start: 0, columns: 3, rotate: -Math.PI/16 },
       hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
       keypress: { up: 87, left: 65, down: 83, right: 68 }
     };
