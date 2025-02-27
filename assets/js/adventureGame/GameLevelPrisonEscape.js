@@ -13,7 +13,7 @@ class GameLevelPrisonEscape {
     const height = (typeof GameEnv.getHeight === "function") ? GameEnv.getHeight() : window.innerHeight;
 
     // Background data
-    const image_src_desert = ${path}/images/gamify/Prisonescapebackround.jpeg;
+    const image_src_desert = `${path}/images/gamify/Prisonescapebackround.jpeg`;
     const image_data_desert = {
       name: 'Prison Escape',
       greeting: "Welcome to the Prison! It's miserable here. Your only job... GET OUT!",
@@ -22,7 +22,7 @@ class GameLevelPrisonEscape {
     };
 
     // Player data for MC
-    const sprite_src_chillguy = ${path}/assets/js/adventureGame/MC.png;
+    const sprite_src_chillguy = `${path}/assets/js/adventureGame/MC.png`;
     const CHILLGUY_SCALE_FACTOR = 5;
     const sprite_data_chillguy = {
       id: 'Chill Guy',
@@ -52,7 +52,7 @@ class GameLevelPrisonEscape {
       {
         id: 'Tux',
         greeting: "Hi, I am Tux, the Linux mascot. I am happy to spend some shell time with you!",
-        src: ${path}/images/gamify/tux.png,
+        src: `${path}/images/gamify/tux.png`,
         SCALE_FACTOR: 8,
         ANIMATION_RATE: 50,
         pixels: { height: 256, width: 352 },
@@ -64,7 +64,7 @@ class GameLevelPrisonEscape {
       {
         id: 'Octocat',
         greeting: "Hi, I am Octocat! I am the GitHub collaboration mascot!",
-        src: ${path}/images/gamify/octocat.png,
+        src: `${path}/images/gamify/octocat.png`,
         SCALE_FACTOR: 10,
         ANIMATION_RATE: 50,
         pixels: { height: 301, width: 801 },
@@ -76,7 +76,7 @@ class GameLevelPrisonEscape {
       {
         id: 'Robot',
         greeting: "Hi, I am Robot, the Jupyter Notebook mascot!",
-        src: ${path}/images/gamify/robot.png,
+        src: `${path}/images/gamify/robot.png`,
         SCALE_FACTOR: 10,
         ANIMATION_RATE: 100,
         pixels: { height: 316, width: 627 },
