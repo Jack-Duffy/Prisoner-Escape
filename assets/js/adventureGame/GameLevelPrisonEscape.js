@@ -8,9 +8,9 @@ class GameLevelPrisonEscape {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
 
-    // ✅ Fix: Call `GameEnv.getWidth()` and `GameEnv.getHeight()` properly
-    const width = GameEnv.getWidth();
-    const height = GameEnv.getHeight();
+    // ✅ Fix: Ensure GameEnv methods exist or use fallback values
+    const width = (typeof GameEnv.getWidth === "function") ? GameEnv.getWidth() : window.innerWidth;
+    const height = (typeof GameEnv.getHeight === "function") ? GameEnv.getHeight() : window.innerHeight;
 
     // Background data
     const image_src_desert = `${path}/images/gamify/Prisonescapebackround.jpeg`;
