@@ -7,8 +7,7 @@ class GameLevelPrisonEscape {
   constructor(path) {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
-
-    // ✅ Fix: Ensure GameEnv methods exist or use fallback values
+    
     const width = (typeof GameEnv.getWidth === "function") ? GameEnv.getWidth() : window.innerWidth;
     const height = (typeof GameEnv.getHeight === "function") ? GameEnv.getHeight() : window.innerHeight;
 
