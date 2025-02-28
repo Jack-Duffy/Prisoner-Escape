@@ -28,7 +28,7 @@ class GameLevelPrisonEscape {
     id: 'Chill Guy',
     greeting: "Hi, I am Chill Guy, Currently in prison, Unfortunatly I need to break out!",
     src: sprite_src_chillguy,
-    SCALE_FACTOR: 5,
+    SCALE_FACTOR: 12,
     SCALE_FACTOR: CHILLGUY_SCALE_FACTOR,
     STEP_FACTOR: 1000,
     ANIMATION_RATE: 50,
@@ -58,7 +58,7 @@ class GameLevelPrisonEscape {
         SCALE_FACTOR: 8,
         ANIMATION_RATE: 50,
         pixels: { height: 256, width: 352 },
-        INIT_POSITION: { x: width / 2, y: height / 2 },
+        INIT_POSITION: { x: width / 3, y: height / 2 },
         orientation: { rows: 8, columns: 11 },
         down: { row: 5, start: 0, columns: 3 },
         hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 }
