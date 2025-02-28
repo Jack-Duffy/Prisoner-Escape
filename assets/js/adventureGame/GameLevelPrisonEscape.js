@@ -60,6 +60,10 @@ class GameLevelPrisonEscape {
     INIT_POSITION: { x: 515 / 3, y: 246 / 2 },
     orientation: { rows: 4, columns: 5 },
     frameSize: { width: 103, height: 123 }, // 515/5 = 103, 246/2 = 123
+    down: { row: 0, start: 0, columns: 3 }, 
+    left: { row: 1, start: 0, columns: 3 }, 
+    right: { row: 2, start: 0, columns: 3 }, 
+    up: { row: 3, start: 0, columns: 3 }, 
     hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 }
         
       },   
