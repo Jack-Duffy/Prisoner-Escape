@@ -56,7 +56,7 @@ class GameLevelPrisonEscape {
         src: `${path}/assets/js/adventureGame/Npc1.png`,
         SCALE_FACTOR: 8,
         ANIMATION_RATE: 50,
-        pixels: { height: 256, width: 352 },
+        pixels: { height: 256, width: 345 },
         INIT_POSITION: { x: width / 3, y: height / 2 },
         orientation: { rows: 4, columns: 4 },
         frameSize: { width: 88, height: 64 }, 
