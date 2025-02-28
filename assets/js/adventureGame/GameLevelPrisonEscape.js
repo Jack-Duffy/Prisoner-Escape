@@ -55,20 +55,23 @@ class GameLevelPrisonEscape {
         greeting: "Hi, I am Tux, the Linux mascot. I am happy to spend some shell time with you!",
         src: `${path}/assets/js/adventureGame/Npc1.png`,
         SCALE_FACTOR: 8,
-        ANIMATION_RATE: 50,
-        pixels: { height: 246, width: 515 },
-        INIT_POSITION: { x: width / 3, y: height / 2 },
-        orientation: { rows: 4, columns: 4 },
-        frameSize: { width: 88, height: 64 }, 
-        down: { row: 0, start: 0, columns: 3 }, 
-        downRight: { row: 1, start: 0, columns: 3, rotate: Math.PI / 16 }, 
-        downLeft: { row: 2, start: 0, columns: 3, rotate: -Math.PI / 16 }, 
-        left: { row: 2, start: 0, columns: 3 }, 
-        right: { row: 3, start: 0, columns: 3 }, 
-        up: { row: 1, start: 0, columns: 3 }, 
-        upLeft: { row: 2, start: 0, columns: 3, rotate: Math.PI / 16 }, 
-        upRight: { row: 1, start: 0, columns: 3, rotate: -Math.PI / 16 }, 
-        hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 }
+    ANIMATION_RATE: 50,
+    pixels: { height: 246, width: 515 },
+    INIT_POSITION: { x: 515 / 3, y: 246 / 2 },
+    orientation: { rows: 4, columns: 5 },
+    frameSize: { width: 103, height: 123 }, // 515/5 = 103, 246/2 = 123
+
+    down: { row: 0, start: 0, columns: 3 }, 
+    left: { row: 1, start: 0, columns: 3 }, 
+    right: { row: 2, start: 0, columns: 3 }, 
+    up: { row: 3, start: 0, columns: 3 }, 
+
+    downLeft: { row: 1, start: 3, columns: 3, rotate: -Math.PI / 16 },
+    downRight: { row: 1, start: 3, columns: 3, rotate: Math.PI / 16 },
+    upLeft: { row: 3, start: 3, columns: 3, rotate: Math.PI / 16 },
+    upRight: { row: 3, start: 3, columns: 3, rotate: -Math.PI / 16 },
+
+    hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 }
         
       },   
     {
