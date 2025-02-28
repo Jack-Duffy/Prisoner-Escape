@@ -50,7 +50,7 @@ const GameControl = {
 
     start: function(path) {
         GameEnv.create();
-        this.levelClasses = [GameLevelDesert, GameLevelWater, GameLevelPrisonEscape];
+        this.levelClasses = [GameLevelPrisonEscape, GameLevelDesert, GameLevelWater];
         this.currentLevelIndex = 0;
         this.path = path;
         this.addExitKeyListener();
