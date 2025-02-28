@@ -58,9 +58,18 @@ class GameLevelPrisonEscape {
         ANIMATION_RATE: 50,
         pixels: { height: 256, width: 352 },
         INIT_POSITION: { x: width / 3, y: height / 2 },
-        orientation: { rows: 8, columns: 11 },
-        down: { row: 0, start: 0, columns: 3 },
+        orientation: { rows: 4, columns: 4 },
+        frameSize: { width: 88, height: 64 }, 
+        down: { row: 0, start: 0, columns: 3 }, 
+        downRight: { row: 1, start: 0, columns: 3, rotate: Math.PI / 16 }, 
+        downLeft: { row: 2, start: 0, columns: 3, rotate: -Math.PI / 16 }, 
+        left: { row: 2, start: 0, columns: 3 }, 
+        right: { row: 3, start: 0, columns: 3 }, 
+        up: { row: 1, start: 0, columns: 3 }, 
+        upLeft: { row: 2, start: 0, columns: 3, rotate: Math.PI / 16 }, 
+        upRight: { row: 1, start: 0, columns: 3, rotate: -Math.PI / 16 }, 
         hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 }
+        
       },   
     {
         id: 'Octocat',
