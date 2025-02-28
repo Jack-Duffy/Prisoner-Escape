@@ -23,11 +23,12 @@ class GameLevelPrisonEscape {
 
     // Player data for MC
     const sprite_src_chillguy = `${path}/assets/js/adventureGame/MC.png`;
-    const CHILLGUY_SCALE_FACTOR = 5;
-    const sprite_data_chillguy = {
-    id: 'Chill Guy',
-    greeting: "Hi, I am Chill Guy, Currently in prison, Unfortunatly I need to break out!",
+    const CHILLGUY_SCALE_FACTOR = 5;
+    const sprite_data_chillguy = {
+    id: 'Chill Guy',
+    greeting: "Hi, I am Chill Guy, Currently in prison, Unfortunatly I need to break out!",
     src: sprite_src_chillguy,
+    SCALE_FACTOR: 5,
     SCALE_FACTOR: CHILLGUY_SCALE_FACTOR,
     STEP_FACTOR: 1000,
     ANIMATION_RATE: 50,
