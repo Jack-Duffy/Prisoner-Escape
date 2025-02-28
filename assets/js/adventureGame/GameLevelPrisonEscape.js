@@ -22,7 +22,7 @@ class GameLevelPrisonEscape {
     };
 
     // Player data for MC
-    const sprite_src_chillguy = `${path}/assets/js/adventureGame/MC.png`;
+    const sprite_src_chillguy = `${path}/assets/js/adventureGame/MainCharecter.png.png`;
     const CHILLGUY_SCALE_FACTOR = 5;
     const sprite_data_chillguy = {
     id: 'Chill Guy',
