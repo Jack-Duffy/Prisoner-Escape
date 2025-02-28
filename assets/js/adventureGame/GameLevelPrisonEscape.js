@@ -31,7 +31,7 @@ class GameLevelPrisonEscape {
     STEP_FACTOR: 2000,
     ANIMATION_RATE: 10,
     INIT_POSITION: { x: 0, y: height - (height / CHILLGUY_SCALE_FACTOR) },
-    pixels: { height: 760, width: 200 }, 
+    pixels: { height: 760, width: 495 }, 
     orientation: { rows: 4, columns: 4 }, 
     frameSize: { width: 100, height: 190 }, 
     down: { row: 0, start: 0, columns: 3 }, 
