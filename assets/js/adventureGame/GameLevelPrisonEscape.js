@@ -22,9 +22,8 @@ class GameLevelPrisonEscape {
     };
 3
     // Player data for MC
-<<<<<<< HEAD
+HEAD
     
-=======
     const sprite_src_chillguy = `${path}/assets/js/adventureGame/MC.png`;
     const CHILLGUY_SCALE_FACTOR = 5;
     const sprite_data_chillguy = {
@@ -50,7 +49,6 @@ class GameLevelPrisonEscape {
       keypress: { up: 87, left: 65, down: 83, right: 68 }
     };
 
->>>>>>> 6ba3c823b4c43c0fdfe3b68060125e527a1ed6b2
     // NPC Data
     const npcs = [
       {
