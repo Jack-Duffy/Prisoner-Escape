@@ -33,7 +33,7 @@ class GameLevelPrisonEscape {
     INIT_POSITION: { x: 0, y: height - (height / CHILLGUY_SCALE_FACTOR) },
     pixels: { height: 760, width: 500 }, 
     orientation: { rows: 4, columns: 4 }, 
-    frameSize: { width: 50, height: 190 }, 
+    frameSize: { width: 100, height: 190 }, 
     down: { row: 0, start: 0, columns: 3 }, 
     up: { row: 1, start: 0, columns: 3 }, 
     left: { row: 2, start: 0, columns: 3 }, 
