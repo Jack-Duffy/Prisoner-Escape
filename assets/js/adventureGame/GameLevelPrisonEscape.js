@@ -2,13 +2,14 @@ import GameEnv from './GameEnv.js';
 import Background from './Background.js';
 import Player from './Player.js';
 import Npc from './Npc.js';
+import Quiz from './Quiz.js';
 
 class GameLevelPrisonEscape {
   constructor(path) {
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
 
-    // ✅ Fix: Ensure GameEnv methods exist or use fallback values
+    // Ensure GameEnv methods exist or use fallback values
     const width = (typeof GameEnv.getWidth === "function") ? GameEnv.getWidth() : window.innerWidth;
     const height = (typeof GameEnv.getHeight === "function") ? GameEnv.getHeight() : window.innerHeight;
 
@@ -24,69 +25,80 @@ class GameLevelPrisonEscape {
     const sprite_src_chillguy = `${path}/assets/js/adventureGame/MainCharecter.png`;
     const CHILLGUY_SCALE_FACTOR = 10;
     const sprite_data_chillguy = {
-    id: 'Chill Guy',
-    greeting: "Hi, I am Chill Guy, Currently in prison, Unfortunately I need to break out!",
-    src: sprite_src_chillguy,
-    SCALE_FACTOR: CHILLGUY_SCALE_FACTOR,
-    STEP_FACTOR: 2000,
-    ANIMATION_RATE: 10,
-    INIT_POSITION: { x: 0, y: height - (height / CHILLGUY_SCALE_FACTOR) },
-    pixels: { height: 760, width: 500 }, 
-    orientation: { rows: 4, columns: 4 }, 
-    frameSize: { width: 100, height: 190 }, 
-    down: { row: 0, start: 0, columns: 3 }, 
-    up: { row: 1, start: 0, columns: 3 }, 
-    left: { row: 2, start: 0, columns: 3 }, 
-    right: { row: 3, start: 0, columns: 3 }, 
-    downRight: { row: 0, start: 0, columns: 3, rotate: Math.PI / 16 }, 
-    downLeft: { row: 0, start: 0, columns: 3, rotate: -Math.PI / 16 }, 
-    upLeft: { row: 1, start: 0, columns: 3, rotate: Math.PI / 16 }, 
-    upRight: { row: 1, start: 0, columns: 3, rotate: -Math.PI / 16 }, 
-    hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 }, 
-    keypress: { up: 87, left: 65, down: 83, right: 68 }
-};
-
-
+      id: 'Chill Guy',
+      greeting: "Hi, I am Chill Guy, Currently in prison, Unfortunately I need to break out!",
+      src: sprite_src_chillguy,
+      SCALE_FACTOR: CHILLGUY_SCALE_FACTOR,
+      STEP_FACTOR: 2000,
+      ANIMATION_RATE: 10,
+      INIT_POSITION: { x: 0, y: height - (height / CHILLGUY_SCALE_FACTOR) },
+      pixels: { height: 760, width: 500 }, 
+      orientation: { rows: 4, columns: 4 }, 
+      frameSize: { width: 100, height: 190 }, 
+      down: { row: 0, start: 0, columns: 3 }, 
+      up: { row: 1, start: 0, columns: 3 }, 
+      left: { row: 2, start: 0, columns: 3 }, 
+      right: { row: 3, start: 0, columns: 3 }, 
+      hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 }, 
+      keypress: { up: 87, left: 65, down: 83, right: 68 }
+    };
 
     // NPC Data
     const npcs = [
       {
         id: 'Tux',
-    greeting: "Hi, I am the prisoner. Let's escape.",
-    src: `${path}/assets/js/adventureGame/Npc1.png`,
-    SCALE_FACTOR: 8,
-    ANIMATION_RATE: 50,
-    pixels: { height: 224, width: 515 },
-    INIT_POSITION: { x: 103, y: 92 },
-    orientation: { rows: 3, columns: 7 }, 
-    frameSize: { width: 73, height: 82 }, // Adjusted for 7 columns and 3 rows
-    down: { row: 1, start: 0, columns: 7 }, // Iterate through row 1 (second row)
-    hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 }
-      },   
-    {
-    id: 'Octocat',
-    greeting: "Hi, I am Octocat! I am the GitHub collaboration mascot!",
-    src: `${path}/images/gamify/octocat.png`,
-    SCALE_FACTOR: 8,
-    ANIMATION_RATE: 50,
-    pixels: { height: 256, width: 352 },
-    INIT_POSITION: { x: 50, y: 90  },
-    orientation: { rows: 8, columns: 11 },
-    down: { row: 0, start: 0, columns: 3 },
-    hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 }
-
+        greeting: "Hi I am Tux, the Linux mascot. I am very happy to spend some Linux shell time with you!",
+        src: `${path}/assets/js/adventureGame/Npc1.png`,
+        SCALE_FACTOR: 8,
+        ANIMATION_RATE: 50,
+        pixels: { height: 224, width: 515 },
+        INIT_POSITION: { x: 103, y: 92 },
+        orientation: { rows: 3, columns: 7 },
+        frameSize: { width: 73, height: 82 },
+        down: { row: 1, start: 0, columns: 7 },
+        hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
+        quiz: {
+          title: "Linux Command Quiz",
+          questions: [
+            "Which command is used to list files in a directory?\n1. ls\n2. dir\n3. list\n4. show",
+            "Which command is used to change directories?\n1. cd\n2. chdir\n3. changedir\n4. changedirectory"
+          ]
+        },
+        reaction: function() {
+          alert(this.greeting);
+        },
+        interact: function() {
+          let quiz = new Quiz();
+          quiz.initialize();
+          quiz.openPanel(this.quiz);
+        }
       },
       {
-        id: 'Robot',
-        greeting: "Hi, I am Robot, the Jupyter Notebook mascot!",
-        src: `${path}/images/gamify/robot.png`,
+        id: 'Octocat',
+        greeting: "Hi I am Octocat! I am the GitHub collaboration mascot.",
+        src: `${path}/images/gamify/octocat.png`,
         SCALE_FACTOR: 10,
-        ANIMATION_RATE: 100,
-        pixels: { height: 316, width: 627 },
-        INIT_POSITION: { x: width * 3 / 4, y: height * 3 / 4 },
-        orientation: { rows: 3, columns: 6 },
-        down: { row: 1, start: 0, columns: 6 },
-        hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 }
+        ANIMATION_RATE: 50,
+        pixels: { height: 301, width: 801 },
+        INIT_POSITION: { x: width / 4, y: height / 4 },
+        orientation: { rows: 1, columns: 4 },
+        down: { row: 0, start: 0, columns: 3 },
+        hitbox: { widthPercentage: 0.1, heightPercentage: 0.1 },
+        quiz: {
+          title: "GitHub Command Quiz",
+          questions: [
+            "Which command is used to clone a repository?\n1. git clone\n2. git fork\n3. git copy\n4. git download",
+            "Which command is used to add changes to the staging area?\n1. git add\n2. git stage\n3. git commit\n4. git push"
+          ]
+        },
+        reaction: function() {
+          alert(this.greeting);
+        },
+        interact: function() {
+          let quiz = new Quiz();
+          quiz.initialize();
+          quiz.openPanel(this.quiz);
+        }
       }
     ];
 
