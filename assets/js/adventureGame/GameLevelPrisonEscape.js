@@ -52,20 +52,16 @@ class GameLevelPrisonEscape {
     const npcs = [
       {
         id: 'Tux',
-        greeting: "Hi, I am Tux, the Linux mascot. I am happy to spend some shell time with you!",
-        src: `${path}/assets/js/adventureGame/Npc1.png`,
-        SCALE_FACTOR: 8,
+    greeting: "Hi, I am the prisoner. Let's escape.",
+    src: `${path}/assets/js/adventureGame/Npc1.png`,
+    SCALE_FACTOR: 8,
     ANIMATION_RATE: 50,
-    pixels: { height: 246, width: 515 },
-    INIT_POSITION: { x: 515 / 3, y: 246 / 2 },
-    orientation: { rows: 4, columns: 5 },
-    frameSize: { width: 103, height: 123 }, // 515/5 = 103, 246/2 = 123
-    down: { row: 0, start: 0, columns: 3 }, 
-    left: { row: 1, start: 0, columns: 3 }, 
-    right: { row: 2, start: 0, columns: 3 }, 
-    up: { row: 3, start: 0, columns: 3 }, 
+    pixels: { height: 224, width: 515 },
+    INIT_POSITION: { x: 103, y: 92 },
+    orientation: { rows: 3, columns: 7 }, 
+    frameSize: { width: 73, height: 82 }, // Adjusted for 7 columns and 3 rows
+    down: { row: 1, start: 0, columns: 7 }, // Iterate through row 1 (second row)
     hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 }
-        
       },   
     {
         id: 'Octocat',
