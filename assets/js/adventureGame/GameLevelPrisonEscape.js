@@ -64,16 +64,16 @@ class GameLevelPrisonEscape {
     hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 }
       },   
     {
-        id: 'Octocat',
-        greeting: "Hi, I am Octocat! I am the GitHub collaboration mascot!",
-        src: `${path}/images/gamify/octocat.png`,
-        SCALE_FACTOR: 8,
-ANIMATION_RATE: 50,
-pixels: { height: 256, width: 352 },
-INIT_POSITION: { x: width / 3, y: height / 2 },
-orientation: { rows: 8, columns: 11 },
-down: { row: 0, start: 0, columns: 3 },
-hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 }
+    id: 'Octocat',
+    greeting: "Hi, I am Octocat! I am the GitHub collaboration mascot!",
+    src: `${path}/images/gamify/octocat.png`,
+    SCALE_FACTOR: 8,
+    ANIMATION_RATE: 50,
+    pixels: { height: 256, width: 352 },
+    INIT_POSITION: { x: width / 3, y: height / 2 },
+    orientation: { rows: 8, columns: 11 },
+    down: { row: 0, start: 0, columns: 3 },
+    hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 }
 
       },
       {
