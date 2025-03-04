@@ -26,6 +26,7 @@ class Player extends Character {
         super(data);
         this.keypress = data?.keypress || {up: 87, left: 65, down: 83, right: 68};
         this.activeKeys = new Set();
+        this.speedMultiplier = 1.5; // Increase speed
         this.bindEventListeners();
     }
 
@@ -55,16 +56,16 @@ class Player extends Character {
         this.velocity.y = 0;
 
         if (this.activeKeys.has(this.keypress.up)) {
-            this.velocity.y -= this.yVelocity;
+            this.velocity.y -= this.yVelocity * this.speedMultiplier;
         }
         if (this.activeKeys.has(this.keypress.down)) {
-            this.velocity.y += this.yVelocity;
+            this.velocity.y += this.yVelocity * this.speedMultiplier;
         }
         if (this.activeKeys.has(this.keypress.left)) {
-            this.velocity.x -= this.xVelocity;
+            this.velocity.x -= this.xVelocity * this.speedMultiplier;
         }
         if (this.activeKeys.has(this.keypress.right)) {
-            this.velocity.x += this.xVelocity;
+            this.velocity.x += this.xVelocity * this.speedMultiplier;
         }
     }
 }
