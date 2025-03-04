@@ -11,7 +11,9 @@ class Npc extends Character {
         // Add new questions
         this.questions.push(
             "What year was the first programming language made?\n1. 1403\n2. 2027\n3. 1942\n4. 2011",
-            "What is the largest company by market cap?\n1. Target\n2. Apple\n3. Walmart\n4. Boeing"
+            "What is the largest company by market cap?\n1. Target\n2. Apple\n3. Walmart\n4. Boeing",
+            "Which of the following is NOT a programming language?\n1. Python\n2. CSS\n3. Java\n4. Ruby",
+            "Which is a JavaScript data type?\n1. Car\n2. House\n3. Tree\n4. String"
         );
         
         this.currentQuestionIndex = 0; // Start from the first question
