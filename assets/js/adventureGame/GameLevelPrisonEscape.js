@@ -2,6 +2,7 @@ import GameEnv from './GameEnv.js';
 import Background from './Background.js';
 import Player from './Player.js';
 import Npc from './Npc.js';
+import Quiz from './Quiz.js';
 
 class GameLevelPrisonEscape {
   constructor(path) {
@@ -19,7 +20,7 @@ class GameLevelPrisonEscape {
     // Player Data
     const sprite_data_chillguy = {
       id: 'Chill Guy',
-      greeting: "Hi, I am Chill Guy, Currently in prison, Unfortunately I need to break out!",
+      greeting: "Hi, I am Chill Guy. Currently in prison. Unfortunately, I need to break out!",
       src: `${path}/assets/js/adventureGame/MainCharecter.png`,
       SCALE_FACTOR: 10,
       STEP_FACTOR: 2000,
@@ -39,8 +40,8 @@ class GameLevelPrisonEscape {
     // NPC Data
     const npcs = [
       {
-        id: 'Tux',
-        greeting: "Hi I am Tux, the Linux mascot. I am very happy to spend some Linux shell time with you!",
+        id: 'Tofer',
+        greeting: "Tough luck out here, buster... answer these questions, then talk to the real boss in the red.",
         src: `${path}/assets/js/adventureGame/Npc1.png`,
         SCALE_FACTOR: 8,
         ANIMATION_RATE: 50,
@@ -51,10 +52,10 @@ class GameLevelPrisonEscape {
         down: { row: 1, start: 0, columns: 7 },
         hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
         quiz: {
-          title: "Linux Command Quiz",
+          title: "General Knowledge Quiz",
           questions: [
-            "Which command is used to list files in a directory?\n1. ls\n2. dir\n3. list\n4. show",
-            "Which command is used to change directories?\n1. cd\n2. chdir\n3. changedir\n4. changedirectory"
+            "What is the largest company by market cap?\n1. Target\n2. Apple\n3. Walmart\n4. Boeing",
+            "What year was the first programming language made?\n1. 1403\n2. 2027\n3. 1942\n4. 2011"
           ]
         },
         reaction: function () { alert(this.greeting); },
@@ -65,8 +66,8 @@ class GameLevelPrisonEscape {
         }
       },
       {
-        id: 'Octocat',
-        greeting: "Hi I am Octocat! I am the GitHub code collaboration mascot",
+        id: 'Boss in Red',
+        greeting: "So you're the new guy around... answer these final questions, and you will be allowed the key out of here.",
         src: `${path}/assets/js/adventureGame/PrisonerNPC.png`,
         SCALE_FACTOR: 10,
         ANIMATION_RATE: 50,
