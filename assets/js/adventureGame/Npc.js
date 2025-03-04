@@ -1,4 +1,3 @@
-// Imports (assuming these are available in your project)
 import GameEnv from './GameEnv.js';
 import Background from './Background.js';
 import Player from './Player.js';
@@ -9,27 +8,36 @@ import Prompt from './Prompt.js';
 class Npc extends Character {
     constructor(data = null) {
         super(data);
-        console.log("NPC Initialized:", this.spriteData.id); // Debug
-        this.quiz = data?.quiz?.title;
-        this.questions = Prompt.shuffleArray(data?.quiz?.questions || []);
-        console.log("Questions:", this.questions); // Debug
+        console.log("NPC Constructor - ID:", data ? data.id : "No ID", "Data:", data); // Debug
+        this.quiz = data && data.quiz ? data.quiz.title : "No Quiz Title";
+        this.questions = Array.isArray(data?.quiz?.questions) 
+            ? (Prompt && typeof Prompt.shuffleArray === 'function' 
+                ? Prompt.shuffleArray([...data.quiz.questions]) 
+                : [...data.quiz.questions]) 
+            : [];
+        console.log("NPC Questions:", this.questions); // Debug
         this.currentQuestionIndex = 0;
         this.alertTimeout = null;
         this.bindEventListeners();
-        this.correctAnswers = data?.quiz?.answers || [];
+        this.correctAnswers = data && data.quiz && data.quiz.answers ? data.quiz.answers : [];
+        // Ensure spriteData is set
+        this.spriteData = data || {};
+        console.log("NPC Position:", this.spriteData.INIT_POSITION); // Debug
     }
 
     update() {
-        console.log("NPC Updating:", this.spriteData.id); // Debug
+        console.log("NPC Update - ID:", this.spriteData ? this.spriteData.id : "No ID"); // Debug
         this.draw();
     }
 
     bindEventListeners() {
+        console.log("Binding NPC event listeners"); // Debug
         addEventListener('keydown', this.handleKeyDown.bind(this));
         addEventListener('keyup', this.handleKeyUp.bind(this));
     }
 
     handleKeyDown({ key }) {
+        console.log("NPC Key Down:", key); // Debug
         switch (key) {
             case 'e':
             case 'u':
@@ -39,6 +47,7 @@ class Npc extends Character {
     }
 
     handleKeyUp({ key }) {
+        console.log("NPC Key Up:", key); // Debug
         if (key === 'e' || key === 'u') {
             if (this.alertTimeout) {
                 clearTimeout(this.alertTimeout);
@@ -54,17 +63,16 @@ class Npc extends Character {
     }
 
     shareQuizQuestion() {
-        const players = GameEnv.gameObjects.filter(obj => obj.state.collisionEvents.includes(this.spriteData.id));
+        const players = GameEnv.gameObjects.filter(obj => obj.state && obj.state.collisionEvents && obj.state.collisionEvents.includes(this.spriteData ? this.spriteData.id : ""));
         const hasQuestions = this.questions.length > 0;
-        console.log("Players near", this.spriteData.id, ":", players.length); // Debug
+        console.log("NPC Share Quiz - Players:", players.length, "Has Questions:", hasQuestions); // Debug
         if (players.length > 0 && hasQuestions) {
             players.forEach(player => {
                 if (!Prompt.isOpen) {
                     Prompt.currentNpc = this;
-                    console.log("Triggering Prompt for:", this.quiz, this.getNextQuestion()); // Debug
-                    // Temporarily use alert to test
-                    alert(`${this.quiz}\n${this.getNextQuestion()}`);
-                    // Prompt.openPromptPanel(this); // Uncomment once NPCs are confirmed visible
+                    console.log("Triggering Quiz:", this.quiz, this.getNextQuestion()); // Debug
+                    alert(`${this.quiz}\n${this.getNextQuestion()}`); // Temporary test
+                    // Prompt.openPromptPanel(this); // Uncomment when NPCs are visible
                 }
             });
         }
@@ -74,8 +82,10 @@ class Npc extends Character {
 // GameLevelPrisonEscape Class
 class GameLevelPrisonEscape {
     constructor(path) {
+        console.log("GameLevelPrisonEscape Constructor - Path:", path); // Debug
         const width = (typeof GameEnv.getWidth === "function") ? GameEnv.getWidth() : window.innerWidth;
         const height = (typeof GameEnv.getHeight === "function") ? GameEnv.getHeight() : window.innerHeight;
+        console.log("Screen Dimensions:", width, height); // Debug
 
         // Background data
         const image_data_desert = {
@@ -150,8 +160,37 @@ class GameLevelPrisonEscape {
         this.objects = [
             { class: Background, data: image_data_desert },
             { class: Player, data: sprite_data_chillguy },
-            ...npcs.map(npc => ({ class: Npc, data: npc }))
+            ...npcs.map(npc => {
+                const npcInstance = new Npc(npc); // Instantiate NPCs here
+                console.log("NPC Instance Created:", npc.id); // Debug
+                return npcInstance;
+            })
         ];
+        console.log("Game Objects Initialized:", this.objects); // Debug
+
+        // Temporary fallback to ensure screen renders
+        this.initializeRendering();
+    }
+
+    initializeRendering() {
+        console.log("Initializing Rendering"); // Debug
+        try {
+            const canvas = GameEnv.canvas || document.querySelector('canvas');
+            const ctx = GameEnv.context || canvas?.getContext('2d');
+            if (ctx) {
+                ctx.fillStyle = 'gray'; // Fallback to confirm canvas works
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                console.log("Canvas filled with gray"); // Debug
+                // Draw all objects manually as a test
+                this.objects.forEach(obj => {
+                    if (obj.update) obj.update();
+                });
+            } else {
+                console.error("No canvas or context available");
+            }
+        } catch (error) {
+            console.error("Rendering Initialization Error:", error);
+        }
     }
 }
 
