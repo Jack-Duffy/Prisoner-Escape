@@ -1,110 +1,99 @@
-import GameEnv from "./GameEnv.js";
-import Character from "./Character.js";
-import Prompt from "./Prompt.js";
+import GameEnv from './GameEnv.js';
+import Background from './Background.js';
+import Player from './Player.js';
+import Npc from './Npc.js';
 
-class Npc extends Character {
-    constructor(data = null) {
-        super(data);
-        this.quiz = data?.quiz?.title; // Quiz title
-        this.questions = Prompt.shuffleArray(data?.quiz?.questions || []); // Shuffle questions from NPC data
-        this.currentQuestionIndex = 0; // Start from the first question
-        this.alertTimeout = null;
-        this.bindEventListeners();
+class GameLevelPrisonEscape {
+  constructor(path) {
+    const width = (typeof GameEnv.getWidth === "function") ? GameEnv.getWidth() : window.innerWidth;
+    const height = (typeof GameEnv.getHeight === "function") ? GameEnv.getHeight() : window.innerHeight;
 
-        // Assuming the quiz data includes answers, store them if provided
-        this.correctAnswers = data?.quiz?.answers || []; // Optional: Store correct answers if included
-    }
+    // Background data
+    const image_data_desert = {
+      name: 'Prison Escape',
+      src: `${path}/images/gamify/Prisonescapebackround.jpeg`,
+      pixels: { height: 168, width: 300 }
+    };
 
-    /**
-     * Override the update method to draw the NPC.
-     * This NPC is stationary, so the update method only calls the draw method.
-     */
-    update() {
-        this.draw();
-    }
+    // Player Data
+    const sprite_data_chillguy = {
+      id: 'Chill Guy',
+      src: `${path}/assets/js/adventureGame/MainCharecter.png`,
+      SCALE_FACTOR: 10,
+      STEP_FACTOR: 2000,
+      ANIMATION_RATE: 10,
+      INIT_POSITION: { x: 0, y: height - (height / 10) },
+      pixels: { height: 760, width: 500 },
+      orientation: { rows: 4, columns: 4 },
+      frameSize: { width: 100, height: 190 },
+      down: { row: 0, start: 0, columns: 3 },
+      up: { row: 1, start: 0, columns: 3 },
+      left: { row: 2, start: 0, columns: 3 },
+      right: { row: 3, start: 0, columns: 3 },
+      hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
+      keypress: { up: 87, left: 65, down: 83, right: 68 }
+    };
 
-    /**
-     * Bind key event listeners for proximity interaction.
-     */
-    bindEventListeners() {
-        addEventListener('keydown', this.handleKeyDown.bind(this));
-        addEventListener('keyup', this.handleKeyUp.bind(this));
-    }
-
-    /**
-     * Handle keydown events for interaction.
-     * @param {Object} event - The keydown event.
-     */
-    handleKeyDown({ key }) {
-        switch (key) {
-            case 'e': // Player 1 interaction
-            case 'u': // Player 2 interaction
-                this.shareQuizQuestion();
-                break;
+    // NPC Data (Greetings and reaction removed)
+    const npcs = [
+      {
+        id: 'Tux',
+        src: `${path}/assets/js/adventureGame/Npc1.png`,
+        SCALE_FACTOR: 8,
+        ANIMATION_RATE: 50,
+        pixels: { height: 224, width: 515 },
+        INIT_POSITION: { x: 103, y: 92 },
+        orientation: { rows: 3, columns: 7 },
+        frameSize: { width: 73, height: 82 },
+        down: { row: 1, start: 0, columns: 7 },
+        hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
+        quiz: {
+          title: "Programming Quiz",
+          questions: [
+            "Which of these is NOT a programming language?\n1. Python\n2. CSS\n3. Java\n4. C++",
+            "Which of these is a JavaScript data type?\n1. Integer\n2. Character\n3. Decimal\n4. String"
+          ],
+          answers: ['2', '4']
+        },
+        interact: function () {
+          let quiz = new Quiz();
+          quiz.initialize();
+          quiz.openPanel(this.quiz);
         }
-    }
-
-    /**
-     * Handle keyup events to stop player actions.
-     * @param {Object} event - The keyup event.
-     */
-    handleKeyUp({ key }) {
-        if (key === 'e' || key === 'u') {
-            // Clear any active timeouts when the interaction key is released
-            if (this.alertTimeout) {
-                clearTimeout(this.alertTimeout);
-                this.alertTimeout = null;
-            }
+      },
+      {
+        id: 'Octocat',
+        src: `${path}/assets/js/adventureGame/PrisonerNPC.png`,
+        SCALE_FACTOR: 10,
+        ANIMATION_RATE: 50,
+        pixels: { height: 146, width: 346 },
+        INIT_POSITION: { x: width / 4, y: height / 4 },
+        orientation: { rows: 1, columns: 3 },
+        down: { row: 0, start: 0, columns: 3 },
+        hitbox: { widthPercentage: 0.1, heightPercentage: 0.1 },
+        quiz: {
+          title: "Programming Quiz",
+          questions: [
+            "Which of these is NOT a programming language?\n1. Python\n2. CSS\n3. Java\n4. C++",
+            "Which of these is a JavaScript data type?\n1. Integer\n2. Character\n3. Decimal\n4. String"
+          ],
+          answers: ['2', '4']
+        },
+        interact: function () {
+          let quiz = new Quiz();
+          quiz.initialize();
+          quiz.openPanel(this.quiz);
         }
-    }
+      }
+    ];
 
-    /**
-     * Get the next question in the shuffled array.
-     * @returns {string} - The next quiz question.
-     */
-    getNextQuestion() {
-        const question = this.questions[this.currentQuestionIndex];
-        this.currentQuestionIndex = (this.currentQuestionIndex + 1) % this.questions.length; // Cycle through questions
-        return question;
-    }
-
-    /**
-     * Handle proximity interaction and share a quiz question.
-     */
-    shareQuizQuestion() {
-        const players = GameEnv.gameObjects.filter(obj => obj.state.collisionEvents.includes(this.spriteData.id));
-        const hasQuestions = this.questions.length > 0;
-        if (players.length > 0 && hasQuestions) {
-            players.forEach(player => {
-                if (!Prompt.isOpen) {
-                    // Assign this NPC as the current NPC in the Prompt system
-                    Prompt.currentNpc = this;
-                    // Open the Prompt panel with this NPC's details
-                    Prompt.openPromptPanel(this);
-                }
-            });
-        }
-    }
-
-    /**
-     * Optional: Method to check if an answer is correct (if Prompt doesn't handle this)
-     * @param {string} playerAnswer - The player's submitted answer (e.g., '2' or '4')
-     * @param {number} questionIndex - The index of the current question
-     * @returns {boolean} - True if the answer is correct, false otherwise
-     */
-    checkAnswer(playerAnswer, questionIndex) {
-        if (this.correctAnswers.length > 0) {
-            return playerAnswer === this.correctAnswers[questionIndex];
-        }
-        // Default logic if no answers are provided in data
-        const question = this.questions[questionIndex];
-        if (question.includes("NOT a programming language")) {
-            return playerAnswer === '2'; // CSS is not a programming language
-        } else if (question.includes("JavaScript data type")) {
-            return playerAnswer === '4'; // String is a JS data type
-        }
-        return false;
-    }
+    // Create objects for this level
+    this.objects = [
+      { class: Background, data: image_data_desert },
+      { class: Player, data: sprite_data_chillguy },
+      ...npcs.map(npc => ({ class: Npc, data: npc }))
+    ];
+  }
 }
 
-export default Npc;
+export default GameLevelPrisonEscape;
