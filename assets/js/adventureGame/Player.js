@@ -26,7 +26,7 @@ class Player extends Character {
         super(data);
         this.keypress = data?.keypress || {up: 87, left: 65, down: 83, right: 68};
         this.activeKeys = new Set();
-        this.speedMultiplier = 1.5; // Increase speed
+        this.speedMultiplier = 2.5; // Further increased speed
         this.bindEventListeners();
     }
 
