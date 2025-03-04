@@ -67,12 +67,12 @@ class GameLevelPrisonEscape {
       {
         id: 'Octocat',
         greeting: "Hi I am Octocat! I am the GitHub code collaboration mascot",
-        src: `${path}/images/gamify/octocat.png`,
+        src: `${path}/assets/js/adventureGame/PrisonerNPC.png`,
         SCALE_FACTOR: 10,
         ANIMATION_RATE: 50,
-        pixels: { height: 301, width: 801 },
+        pixels: { height: 146, width: 346 },
         INIT_POSITION: { x: width / 4, y: height / 4 },
-        orientation: { rows: 1, columns: 4 },
+        orientation: { rows: 1, columns: 3 },
         down: { row: 0, start: 0, columns: 3 },
         hitbox: { widthPercentage: 0.1, heightPercentage: 0.1 },
         quiz: {
