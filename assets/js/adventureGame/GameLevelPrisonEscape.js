@@ -40,7 +40,7 @@ class GameLevelPrisonEscape {
     const npcs = [
       {
         id: 'Tux',
-        greeting: "Hi I am Tux, the Linux mascot. I am very happy to spend some Linux shell time with you!",
+        greeting: "I need you to help me, I have to get out of here NOW!",
         src: `${path}/assets/js/adventureGame/Npc1.png`,
         SCALE_FACTOR: 8,
         ANIMATION_RATE: 50,
@@ -66,7 +66,7 @@ class GameLevelPrisonEscape {
       },
       {
         id: 'Octocat',
-        greeting: "Hi I am Octocat! I am the GitHub code collaboration mascot",
+        greeting: "Im here to help you if you can get somethings right.",
         src: `${path}/assets/js/adventureGame/PrisonerNPC.png`,
         SCALE_FACTOR: 10,
         ANIMATION_RATE: 50,
