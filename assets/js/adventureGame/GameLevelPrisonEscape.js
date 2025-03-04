@@ -2,7 +2,6 @@ import GameEnv from './GameEnv.js';
 import Background from './Background.js';
 import Player from './Player.js';
 import Npc from './Npc.js';
-import Quiz from './Quiz.js';
 
 class GameLevelPrisonEscape {
   constructor(path) {
@@ -20,7 +19,7 @@ class GameLevelPrisonEscape {
     // Player Data
     const sprite_data_chillguy = {
       id: 'Chill Guy',
-      greeting: "Hi, I am Chill Guy. Currently in prison. Unfortunately, I need to break out!",
+      greeting: "Hi, I am Chill Guy, Currently in prison, Unfortunately I need to break out!",
       src: `${path}/assets/js/adventureGame/MainCharecter.png`,
       SCALE_FACTOR: 10,
       STEP_FACTOR: 2000,
@@ -40,13 +39,8 @@ class GameLevelPrisonEscape {
     // NPC Data
     const npcs = [
       {
-<<<<<<< HEAD
         id: 'Tofer',
-        greeting: "Tough luck out here, buster... answer these questions, then talk to the real boss in the red.",
-=======
-        id: 'Tux',
-        greeting: "I need you to help me, I have to get out of here NOW!",
->>>>>>> 3f6f8a59ad3083f1263d34bca9f88650da36206b
+        greeting: "Tough luck out here buster... answer these questions then talk to the real boss in the red",
         src: `${path}/assets/js/adventureGame/Npc1.png`,
         SCALE_FACTOR: 8,
         ANIMATION_RATE: 50,
@@ -71,13 +65,8 @@ class GameLevelPrisonEscape {
         }
       },
       {
-<<<<<<< HEAD
         id: 'Boss in Red',
-        greeting: "So you're the new guy around... answer these final questions, and you will be allowed the key out of here.",
-=======
-        id: 'Octocat',
-        greeting: "Im here to help you if you can get somethings right.",
->>>>>>> 3f6f8a59ad3083f1263d34bca9f88650da36206b
+        greeting: "So your the new guy around... answer these final questions and you will be allowed the key out of here",
         src: `${path}/assets/js/adventureGame/PrisonerNPC.png`,
         SCALE_FACTOR: 10,
         ANIMATION_RATE: 50,
