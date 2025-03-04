@@ -42,7 +42,7 @@ class Npc extends Character {
         if (key === 'e' || key === 'u') {
             if (this.alertTimeout) {
                 clearTimeout(this.alertTimeout);
-                this.alertTimeout = null);
+                this.alertTimeout = null;
             }
         }
     }
