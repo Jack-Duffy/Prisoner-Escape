@@ -40,8 +40,8 @@ class GameLevelPrisonEscape {
     // NPC Data
     const npcs = [
       {
-        id: 'Tofer',
-        greeting: "Tough luck out here, buster... answer these questions, then talk to the real boss in the red.",
+        id: 'Tux',
+        greeting: "Hi I am Tux, the Linux mascot. I am very happy to spend some Linux shell time with you!",
         src: `${path}/assets/js/adventureGame/Npc1.png`,
         SCALE_FACTOR: 8,
         ANIMATION_RATE: 50,
@@ -66,8 +66,8 @@ class GameLevelPrisonEscape {
         }
       },
       {
-        id: 'Boss in Red',
-        greeting: "So you're the new guy around... answer these final questions, and you will be allowed the key out of here.",
+        id: 'Octocat',
+        greeting: "Hi I am Octocat! I am the GitHub code collaboration mascot",
         src: `${path}/assets/js/adventureGame/PrisonerNPC.png`,
         SCALE_FACTOR: 10,
         ANIMATION_RATE: 50,
