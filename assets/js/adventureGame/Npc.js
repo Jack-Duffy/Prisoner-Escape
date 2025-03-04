@@ -16,9 +16,6 @@ class Npc extends Character {
             "Which is a JavaScript data type?\n1. Car\n2. House\n3. Tree\n4. String"
         );
         
-        // Log to verify questions are added
-        console.log("NPC Questions:", this.questions);
-
         this.currentQuestionIndex = 0; // Start from the first question
         this.alertTimeout = null;
         this.bindEventListeners();
@@ -86,15 +83,9 @@ class Npc extends Character {
     shareQuizQuestion() {
         const players = GameEnv.gameObjects.filter(obj => obj.state.collisionEvents.includes(this.spriteData.id));
         const hasQuestions = this.questions.length > 0;
-        
-        // Log to verify interaction conditions
-        console.log("Players nearby:", players.length, "Has questions:", hasQuestions);
-
         if (players.length > 0 && hasQuestions) {
             players.forEach(player => {
                 if (!Prompt.isOpen) {
-                    // Log to confirm prompt is being opened
-                    console.log("Opening prompt with NPC:", this);
                     // Assign this NPC as the current NPC in the Prompt system
                     Prompt.currentNpc = this;
                     // Open the Prompt panel with this NPC's details
